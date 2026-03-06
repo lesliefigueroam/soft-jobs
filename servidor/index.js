@@ -62,9 +62,12 @@ app.post("/login", async (req, res) => {
 /* OBTENER USUARIO */
 app.get("/usuarios", verificarToken, async (req, res) => {
   try {
+    console.log("EMAIL DEL TOKEN:", req.email);
 
     const usuario = await obtenerUsuario(req.email)
+    console.log("USUARIO BD:", usuario);
 
+  
     res.send({
       email: usuario.email,
       rol: usuario.rol,
