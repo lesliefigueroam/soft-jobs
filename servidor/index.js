@@ -9,7 +9,7 @@ import { registrarUsuario, obtenerUsuario } from "./consultas.js";
 import { logger, verificarCredenciales, verificarToken } from "./middlewares.js";
 
 dotenv.config();
-console.log(process.env.DB_PASSWORD)
+
 const app = express();
 
 app.use(express.json());
@@ -62,10 +62,10 @@ app.post("/login", async (req, res) => {
 /* OBTENER USUARIO */
 app.get("/usuarios", verificarToken, async (req, res) => {
   try {
-    console.log("EMAIL DEL TOKEN:", req.email);
+ 
 
     const usuario = await obtenerUsuario(req.email)
-    console.log("USUARIO BD:", usuario);
+  
 
   
     res.send({
